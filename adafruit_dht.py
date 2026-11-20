@@ -279,6 +279,15 @@ class DHTBase:
         self.measure()
         return self._humidity
 
+    @property
+    def relative_humidity(self) -> Union[int, float, None]:
+        """relative humidity current reading. It makes sure a reading is available
+
+        Raises RuntimeError exception for checksum failure and for insufficient
+        data returned from the device (try again)
+        """
+        return self.humidity
+
 
 class DHT11(DHTBase):
     """Support for DHT11 device.
